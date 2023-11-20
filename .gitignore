@@ -9,3 +9,5 @@ public/*.map
 public/*.js
 data/*
 node_modules/
+routes/
+records/
