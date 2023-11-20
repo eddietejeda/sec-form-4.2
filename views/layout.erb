@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sinatra Martini</title>
+    <link rel="icon"  type="image/png"  href="/images/favicon.png">    
+    <link href="/style.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <section class="container">
+
+      <% if @alert  %>
+        <div class="">
+          <div class="level-right">
+            <%= @alert %>
+          </div>
+        </div>
+      <% end  %>
+        
+
+      <%= yield %>
+    </section>
+  </body>
+  
+  <script src="/app.js"></script>
+  
+</html>

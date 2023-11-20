@@ -1,0 +1,66 @@
+
+
+<div class="columns is-multiline">
+
+  <div class="column is-8 is-offset-2 register">
+    <div class="columns">
+
+
+
+      <div class="column">
+          <script src="https://code.highcharts.com/stock/highstock.js"></script>
+          <script src="https://code.highcharts.com/stock/modules/data.js"></script>
+          <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+        
+          <figure class="highcharts-figure">
+              <div id="indexfunds"></div>
+              <p class="highcharts-description">
+                  This demo shows how related charts can be synchronized. Hover
+                  over one chart to see the effect in the other charts as well.
+                  This is a technique that is commonly seen in dashboards, 
+                  where multiple charts are often used to visualize related
+                  information.
+              </p>
+              
+              <div id="secform4"></div>
+              
+              
+          </figure>
+
+
+          <div id="result"></div>
+          <table  style="width: 100%">
+              <thead>
+                  <tr>
+                      <th>#</th>
+                      <th>Company</th>
+                      <th>Ticker</th>
+                      <th>Amount Sold</th>
+                      <!-- <th>Revenue Q1-2 2019</th>
+                      <th>Revenue Q1-2 2020</th> -->
+                      <th>Revenue Growth<br>2019 Q1/Q2 vs<br>2020 Q1/Q2</th>
+                  </tr>
+              </thead>
+              <tbody id="tbody-sparkline">
+                  <% @companies.each_with_index do |company, index| %>
+                    <tr <%= "style='background-color: #ffdbae'" if company.company_growth < 1 %>>
+                        <th><%= index+1 %></th>
+                        <th><a href="/company/<%= company.ticker %>"><%= company.name %></a></th>
+                        <td><%= company.ticker %></td>
+                        <td style="text-align:right"><%= Money.from_amount(company.amount_sold).format(no_cents: true)  %></td>
+                        <!-- <td data-sparkline="71, 78, 39, 66 "/>
+                        <td data-sparkline="68, 52, 80, 96 "/> -->
+                        <td style="text-align:right"><%= company.company_growth %>%</td>
+                        <!-- <td data-sparkline="3, 26, -41, -30 ; column"/> -->
+                    </tr>
+                  <% end %>
+              </tbody>
+          </table>
+
+      </div>
+
+
+    </div>
+  </div>
+
+</div>

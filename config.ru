@@ -1,0 +1,3 @@
+require "./bootup"
+run App
+

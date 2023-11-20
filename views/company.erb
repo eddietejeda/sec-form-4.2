@@ -1,0 +1,45 @@
+
+
+<div class="columns is-multiline">
+
+  <div class="column is-8 is-offset-2 register">
+    <div class="columns">
+
+
+
+      <div class="column">
+
+
+          <table  style="width: 100%">
+              <thead>
+                  <tr>
+                      <th>#</th>
+                      <th>Company</th>
+                      <th>Document Date</th>
+                      <th>Document URL</th>
+                      <th>Transaction Amount</th>
+                  </tr>
+              </thead>
+              <tbody id="tbody-sparkline">
+                  <% @transactions.each_with_index do |t,i| %>
+                    <tr>
+                        <th><%= i+1 %></th>
+                        <th><%= t.name %></th>
+                        <th><%= t.document_date.to_date %></th>
+                        <th><a href="<%= t.document_url %>">SEC - Form 4</a></th>
+                        <td style="text-align:right"><%= Money.from_amount(t.amount).format(no_cents: true)  %></td>
+                    </tr>
+                  <% end %>
+              </tbody>
+          </table>
+
+      </div>
+
+
+      </div>
+
+
+    </div>
+  </div>
+
+</div>
